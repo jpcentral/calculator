@@ -1,0 +1,77 @@
+ 
+body, html {
+  width:100%;
+  background-color: rgb(76, 24, 97);
+}
+
+.calculator {
+  width: 350px;
+  height: 500px;
+  background-color: rgb(178, 176, 176);
+  margin: 80px;
+  text-align: center;
+  position: relative;
+}
+  .title {
+      padding: 2px;
+      margin: 5px;
+      color: rgb(75, 76, 75);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 30px;
+  }
+
+  .tagline {
+      text-transform: uppercase;
+      color: rgb(75, 76, 75);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: smaller;
+  }
+
+  .input[type="text"] {
+      background-color: rgb(109, 145, 118);
+      width: 85%;
+      font-size: 30px;
+      direction: rtl;
+      font-family: 'Chakra Petch', sans-serif;
+      padding-right: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+  }
+
+  .row {
+      display: block;
+  }
+
+  .button {
+      width: 70px;
+      height: 70px;
+      background-color: rgb(75, 76, 75);
+      color: white;
+      font-size: 15px;
+      border-radius: 1px;
+      margin-left: 1px;
+      margin-right: 1px;
+      margin-bottom: 1px;
+      outline: 1px;
+  }
+
+  .ctrl {
+      width: 70px;
+      height: 70px;
+      background-color: rgb(140, 22, 22);
+      color: white;
+      font-size: 15px;
+      border-radius: 1px;
+      margin-left: 1px;
+      margin-right: 1px;
+      margin-bottom: 1px;
+      outline: 1px;
+  }
+
+  .button.wide {
+      width: 146px;
+  }
+
+  .ctrl.wide {
+      width: 146px;
+  }
