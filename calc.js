@@ -1,7 +1,7 @@
 // variables
 let tempArray = []
 let prevString = ''
-let storedTotal = ''
+let operator = ''
 // display
 let display = document.getElementById('display')
 
@@ -14,6 +14,7 @@ function addToTemp () {
   let button = event.target.value
   if (!isNaN(button) && button !== '0') {
     tempArray.push(button)
+    display = tempArray.join('')
   } else if (button === 'AC') {
     allClear()
   } else if (button === 'CE') {
@@ -23,38 +24,66 @@ function addToTemp () {
   } else if (button === '0') {
     checkforZero(button)
   } else if (button === '+' || button === '-' || button === '*' || button === '/') {
-    calculate(button)
+    checkForOperator(button)
   } else if (button === '='){
-    total()
+    calculate(operator)
   }
 }
 // store current Array, display values
 
-//clear display functions
-allClear() {
+// clear display functions
+
+allClear () {
 
 }
 
-clear() {
-
+clear () {
+display = ''
 }
 
 // // other functions
-checkforDot() {
-
+checkforDot () {
+tempArray.forEach((x) => {if(x === '.'){
+  return
+}
+tempArray.push('.')
+display = tempArray.join('')
+})
 }
 
-checkforZero(){
-
+checkforZero () {
+if (tempArray[0] === '0' && !tempArray[1]) {
+  return
+}
+tempArray.push('0')
+display = tempArray.join('')
 }
 
-calculate(button){
-const stringNum = tempArray.join('') + button
-prevString = stringNum
+storeOperator (button) {
+  if (tempArray.length > 0) {
+    prevString = tempArray.join('') 
+    storeOperator = 
+  }
+// if temparray.length > 0
+// make temp array a string
+// move string to previous string with white space and button
+// clear display
+// otherwise return
 }
 
-total () {
-
+calculate() {
+if (operator === '+' && tempArray.length > 0) {
+  display = Number(prevString) + Number(tempArray.join(''))
+  prevString = display
+} else if (operator === '-') {
+  display = Number(prevString) - Number(display)
+  prevString = display
+} else if (operator === '-') {
+  display = Number(prevString) - Number(display)
+  prevString = display
+} else (operator === '-') {
+  display = Number(prevString) - Number(display)
+  prevString = display
 }
 
 // start function
