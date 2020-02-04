@@ -1,7 +1,6 @@
 // variables
-let tempArray = []
-let prevString = ''
-let operator = ''
+let tempArr = []
+let prevNum = 0
 // display
 let display = document.getElementById('display')
 
@@ -13,8 +12,8 @@ function start () {
 function addToTemp () {
   let button = event.target.value
   if (!isNaN(button) && button !== '0') {
-    tempArray.push(button)
-    display = tempArray.join('')
+    tempArr.push(button)
+    display.value = tempArr.join('')
   } else if (button === 'AC') {
     allClear()
   } else if (button === 'CE') {
@@ -24,66 +23,79 @@ function addToTemp () {
   } else if (button === '0') {
     checkforZero(button)
   } else if (button === '+' || button === '-' || button === '*' || button === '/') {
-    checkForOperator(button)
-  } else if (button === '='){
-    calculate(operator)
+    operate(button)
+    clear()
+  } else if (button === '=') {
+    calculate()
   }
 }
-// store current Array, display values
+// store current Arr, display values
 
 // clear display functions
 
-allClear () {
-
+function allClear () {
+  tempArr = []
+  prevNum = 0
+  display.value = ''
 }
 
-clear () {
-display = ''
+function clear () {
+  display.value = ''
 }
 
 // // other functions
-checkforDot () {
-tempArray.forEach((x) => {if(x === '.'){
-  return
-}
-tempArray.push('.')
-display = tempArray.join('')
-})
-}
-
-checkforZero () {
-if (tempArray[0] === '0' && !tempArray[1]) {
-  return
-}
-tempArray.push('0')
-display = tempArray.join('')
+function checkforDot () {
+  tempArr.forEach((x) => {
+    if (x === '.') {
+      return
+    }
+    tempArr.push('.')
+    display.value = tempArr.join('')
+  })
 }
 
-storeOperator (button) {
-  if (tempArray.length > 0) {
-    prevString = tempArray.join('') 
-    storeOperator = 
+function checkforZero () {
+  if (tempArr[0] === '0' && !tempArr[1]) {
+    return
   }
-// if temparray.length > 0
-// make temp array a string
-// move string to previous string with white space and button
-// clear display
-// otherwise return
+  tempArr.push('0')
+  display.value = tempArr.join('')
 }
 
-calculate() {
-if (operator === '+' && tempArray.length > 0) {
-  display = Number(prevString) + Number(tempArray.join(''))
-  prevString = display
-} else if (operator === '-') {
-  display = Number(prevString) - Number(display)
-  prevString = display
-} else if (operator === '-') {
-  display = Number(prevString) - Number(display)
-  prevString = display
-} else (operator === '-') {
-  display = Number(prevString) - Number(display)
-  prevString = display
+// if +
+// check if prevNum is empty
+// if it is return
+// if not check if temp Arr is > 0
+// if not return
+// if true
+// tempArr.join('')
+// prevNum = number(prevNum) + number(tempArr)
+// then set tempArr to []
+
+function operate (operator) {
+  if (operator === '+' && prevNum !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevNum = Number(prevNum) + Number(tempArr)
+    tempArr = []
+  } else if (operator === '-' && prevNum !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevNum = Number(prevNum) - Number(tempArr)
+    tempArr = []
+  } else if (operator === '*' && prevNum !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevNum = Number(prevNum) * Number(tempArr)
+    tempArr = []
+  } else if (operator === '/' && prevNum !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevNum = Number(prevNum) / Number(tempArr)
+    tempArr = []
+  }
+}
+
+function calculate () {
+  tempArr = tempArr.join('')
+  prevNum = Number(prevNum) + Number(tempArr)
+  tempArr = []
 }
 
 // start function
