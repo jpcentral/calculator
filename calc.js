@@ -1,6 +1,6 @@
 // variables
 let tempArr = []
-let prevNum = 0
+let prevArr = []
 // display
 let display = document.getElementById('display')
 
@@ -29,13 +29,49 @@ function addToTemp () {
     calculate()
   }
 }
-// store current Arr, display values
+
+// if +
+// check if prevNum is empty
+// if it is return
+// if not check if temp Arr is > 0
+// if not return
+// if true
+// tempArr.join('')
+// prevNum = number(prevNum) + number(tempArr)
+// then set tempArr to []
+
+function operate (operator) {
+  if (operator === '+' && prevArr !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevArr = prevArr.join('')
+    let result = Number(prevArr) + Number(tempArr)
+    tempArr = [result]
+  } else if (operator === '-' && prevArr !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevArr = Number(prevArr) - Number(tempArr)
+    tempArr = []
+  } else if (operator === '*' && prevArr !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevArr = Number(prevArr) * Number(tempArr)
+    tempArr = []
+  } else if (operator === '/' && prevArr !== '' && tempArr.length > 0) {
+    tempArr = tempArr.join('')
+    prevArr = Number(prevArr) / Number(tempArr)
+    tempArr = []
+  }
+}
+
+function calculate () {
+  tempArr = tempArr.join('')
+  prevArr = Number(prevArr) + Number(tempArr)
+  tempArr = []
+}
 
 // clear display functions
 
 function allClear () {
   tempArr = []
-  prevNum = 0
+  prevArr = []
   display.value = ''
 }
 
@@ -60,42 +96,6 @@ function checkforZero () {
   }
   tempArr.push('0')
   display.value = tempArr.join('')
-}
-
-// if +
-// check if prevNum is empty
-// if it is return
-// if not check if temp Arr is > 0
-// if not return
-// if true
-// tempArr.join('')
-// prevNum = number(prevNum) + number(tempArr)
-// then set tempArr to []
-
-function operate (operator) {
-  if (operator === '+' && prevNum !== '' && tempArr.length > 0) {
-    tempArr = tempArr.join('')
-    prevNum = Number(prevNum) + Number(tempArr)
-    tempArr = []
-  } else if (operator === '-' && prevNum !== '' && tempArr.length > 0) {
-    tempArr = tempArr.join('')
-    prevNum = Number(prevNum) - Number(tempArr)
-    tempArr = []
-  } else if (operator === '*' && prevNum !== '' && tempArr.length > 0) {
-    tempArr = tempArr.join('')
-    prevNum = Number(prevNum) * Number(tempArr)
-    tempArr = []
-  } else if (operator === '/' && prevNum !== '' && tempArr.length > 0) {
-    tempArr = tempArr.join('')
-    prevNum = Number(prevNum) / Number(tempArr)
-    tempArr = []
-  }
-}
-
-function calculate () {
-  tempArr = tempArr.join('')
-  prevNum = Number(prevNum) + Number(tempArr)
-  tempArr = []
 }
 
 // start function
